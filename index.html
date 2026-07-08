@@ -1,93 +1,481 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی کافه ما</title>
-    <!-- Tailwind CSS for modern styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منوی کافه</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background-color: #f6f2ed;
+      margin: 0;
+      padding: 20px;
+      color: #2b2118;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      color: #4a2f1b;
+    }
+
+    .subtitle {
+      color: #7a6250;
+      margin-top: 0;
+    }
+
+    #loading {
+      background: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      background: #fff;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: right;
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #eee;
+    }
+
+    .menu-item h3 {
+      margin: 0 0 8px;
+      color: #3b2414;
+    }
+
+    .menu-item p {
+      margin: 6px 0;
+      color: #6c5545;
+      line-height: 1.8;
+    }
+
+    .price {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #1f7a3f;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .btn {
+      background-color: #4a2f1b;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #2f1d10;
+    }
+
+    .btn-secondary {
+      background: #eee;
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 3px;
+    }
+
+    .cart {
+      background: #fff;
+      padding: 22px;
+      margin: 35px auto 0;
+      border-radius: 16px;
+      max-width: 650px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: right;
+    }
+
+    .cart h2,
+    .cart h3 {
+      text-align: center;
+      color: #4a2f1b;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cart-total {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 18px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: #1f7a3f;
+      font-size: 16px;
+      padding: 13px;
+      margin-top: 12px;
+    }
+
+    .submit-btn:hover {
+      background-color: #155c2f;
+    }
+
+    .empty {
+      text-align: center;
+      color: #777;
+    }
+
+    .error {
+      color: #b00020;
+      background: #ffe8ec;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .success {
+      color: #155c2f;
+      background: #e8f7ee;
+      padding: 12px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-<body class="bg-amber-50 text-stone-800 min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Hero section -->
-    <header class="bg-stone-900 text-white text-center py-10 shadow-md">
-        <h1 class="text-3xl font-bold text-amber-400">کافه دیزاین</h1>
-        <p class="text-sm mt-2 text-stone-300">طعم اصیل قهوه در فضایی صمیمی</p>
-    </header>
+<body>
 
-    <!-- Main Menu Area -->
-    <main class="max-w-md mx-auto px-4 py-8 flex-grow w-full">
-        <h2 class="text-xl font-bold text-center border-b border-amber-200 pb-3 mb-6">منوی نوشیدنی‌ها</h2>
+  <header>
+    <h1>☕ منوی کافه</h1>
+    <p class="subtitle">سفارش خود را انتخاب و ثبت کنید</p>
+  </header>
 
-        <!-- Menu Item 1 -->
-        <div class="bg-white p-4 rounded-xl shadow-sm mb-4 flex justify-between items-center border border-amber-100">
-            <div>
-                <h3 class="font-bold text-lg">اسپرسو (دبل)</h3>
-                <p class="text-xs text-stone-500 mt-1">۱۰۰٪ عربیکا، طعم قوی و غلیظ</p>
-            </div>
-            <div class="text-left">
-                <span class="font-bold text-amber-700 block">۵۵,۰۰۰ تومان</span>
-                <!-- WhatsApp order link for Item 1 -->
-                <a href="https://wa.me/989120000000?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%DB%8C%DA%A9%20%D8%B9%D8%AF%D8%AF%20%D8%A7%D8%B3%D9%BE%D8%B1%D8%B3%D9%88%20%D8%AF%D8%A8%D9%84%20%D8%B3%D9%81%D8%A7%D8%B1%D8%B4%20%D9%85%DB%8C%E2%80%8C%D8%AF%D9%87%D9%85." 
-                   target="_blank" 
-                   class="inline-block mt-2 text-xs bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded-full transition-all">
-                    سفارش سریع 💬
-                </a>
-            </div>
+  <main>
+    <div id="loading">در حال بارگذاری منو...</div>
+
+    <section id="menu-list" class="menu-container"></section>
+
+    <section class="cart">
+      <h2>🛒 سبد خرید</h2>
+
+      <div id="cart-items" class="empty">سبد خرید شما خالی است.</div>
+
+      <div class="cart-total">
+        <strong>جمع کل:</strong>
+        <span id="total-price">۰</span>
+        تومان
+      </div>
+
+      <hr>
+
+      <h3>ثبت سفارش</h3>
+
+      <input type="text" id="customerName" placeholder="نام شما" />
+      <input type="tel" id="phone" placeholder="شماره تماس" />
+      <input type="text" id="tableNumber" placeholder="شماره میز / توضیحات اختیاری" />
+
+      <button class="btn submit-btn" onclick="submitOrder()">ثبت نهایی سفارش</button>
+
+      <div id="order-message" style="margin-top: 15px;"></div>
+    </section>
+  </main>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwq4VlsG0cfRszNL22DQ6eHcpIkgQaFP1H8X0_aazE4ySoOcnqhA3vq9bYgPb_h7NwP/exec";
+
+    const ORDER_SECRET = "my_cafe_secret_key_12345";
+
+    let menuData = [];
+    let cart = [];
+
+    async function fetchMenu() {
+      const loading = document.getElementById("loading");
+      const menuList = document.getElementById("menu-list");
+
+      try {
+        loading.innerText = "در حال بارگذاری منو...";
+
+        const response = await fetch(WEB_APP_URL);
+        const data = await response.json();
+
+        if (data.status !== "success") {
+          throw new Error(data.message || "خطا در دریافت اطلاعات منو");
+        }
+
+        menuData = data.menu || [];
+
+        menuData = menuData
+          .filter(item => {
+            return item.active === true ||
+                   item.active === "TRUE" ||
+                   item.active === "true" ||
+                   item.active === 1 ||
+                   item.active === "1";
+          })
+          .sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0));
+
+        loading.style.display = "none";
+
+        if (menuData.length === 0) {
+          menuList.innerHTML = `<p class="empty">در حال حاضر آیتم فعالی در منو وجود ندارد.</p>`;
+          return;
+        }
+
+        displayMenu();
+
+      } catch (error) {
+        console.error("خطا در بارگذاری منو:", error);
+        loading.innerHTML = `<div class="error">خطا در اتصال به منو. لطفاً بعداً دوباره تلاش کنید.</div>`;
+      }
+    }
+
+    function displayMenu() {
+      const container = document.getElementById("menu-list");
+
+      container.innerHTML = menuData.map(item => {
+        const imageHtml = item.imageUrl
+          ? `<img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.name || '')}">`
+          : "";
+
+        return `
+          <div class="menu-item">
+            ${imageHtml}
+            <h3>${escapeHtml(item.name || "")}</h3>
+            <p>${escapeHtml(item.description || "")}</p>
+            <span class="price">${formatPrice(item.price)} تومان</span>
+            <button class="btn" onclick="addToCart('${escapeAttr(item.id)}')">افزودن به سفارش</button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function addToCart(id) {
+      const product = menuData.find(item => String(item.id) === String(id));
+
+      if (!product) return;
+
+      const existingItem = cart.find(item => String(item.id) === String(id));
+
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: Number(product.price || 0),
+          qty: 1
+        });
+      }
+
+      updateCartUI();
+    }
+
+    function changeQty(id, amount) {
+      const item = cart.find(product => String(product.id) === String(id));
+
+      if (!item) return;
+
+      item.qty += amount;
+
+      if (item.qty <= 0) {
+        cart = cart.filter(product => String(product.id) !== String(id));
+      }
+
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartDiv = document.getElementById("cart-items");
+      const totalSpan = document.getElementById("total-price");
+
+      if (cart.length === 0) {
+        cartDiv.className = "empty";
+        cartDiv.innerHTML = "سبد خرید شما خالی است.";
+        totalSpan.innerText = "۰";
+        return;
+      }
+
+      cartDiv.className = "";
+
+      cartDiv.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div>
+            <strong>${escapeHtml(item.name)}</strong>
+            <br>
+            <small>
+              ${formatPrice(item.price)} تومان × ${toPersianNumber(item.qty)}
+            </small>
+          </div>
+
+          <div>
+            <button class="btn-secondary" onclick="changeQty('${escapeAttr(item.id)}', -1)">−</button>
+            <span>${toPersianNumber(item.qty)}</span>
+            <button class="btn-secondary" onclick="changeQty('${escapeAttr(item.id)}', 1)">+</button>
+          </div>
         </div>
+      `).join("");
 
-        <!-- Menu Item 2 -->
-        <div class="bg-white p-4 rounded-xl shadow-sm mb-4 flex justify-between items-center border border-amber-100">
-            <div>
-                <h3 class="font-bold text-lg">لاته آرت</h3>
-                <p class="text-xs text-stone-500 mt-1">ترکیب اسپرسو و شیر مخملی</p>
-            </div>
-            <div class="text-left">
-                <span class="font-bold text-amber-700 block">۶۸,۰۰۰ تومان</span>
-                <!-- WhatsApp order link for Item 2 -->
-                <a href="https://wa.me/989120000000?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%DB%8C%DA%A9%20%D8%B9%D8%AF%D8%AF%20%D9%84%D8%A7%D8%AA%D9%87%20%D8%B3%D9%81%D8%A7%D8%B1%D8%B4%20%D9%85%DB%8C%E2%80%8C%D8%AF%D9%87%D9%85." 
-                   target="_blank" 
-                   class="inline-block mt-2 text-xs bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded-full transition-all">
-                    سفارش سریع 💬
-                </a>
-            </div>
-        </div>
+      const total = getCartTotal();
+      totalSpan.innerText = formatPrice(total);
+    }
 
-        <!-- Menu Item 3 -->
-        <div class="bg-white p-4 rounded-xl shadow-sm mb-6 flex justify-between items-center border border-amber-100">
-            <div>
-                <h3 class="font-bold text-lg">کیک شکلاتی خیس</h3>
-                <p class="text-xs text-stone-500 mt-1">تازه و پخت روز</p>
-            </div>
-            <div class="text-left">
-                <span class="font-bold text-amber-700 block">۴۵,۰۰۰ تومان</span>
-                <!-- WhatsApp order link for Item 3 -->
-                <a href="https://wa.me/989120000000?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%DB%8C%DA%A9%20%D8%A8%D8%B1%D8%B4%20%DA%A9%DB%8C%DA%A9%20%D8%B4%DA%A9%D9%84%D8%A7%D8%AA%DB%8C%20%D8%B3%D9%81%D8%A7%D8%B1%D8%B4%20%D9%85%DB%8C%E2%80%8C%D8%AF%D9%87%D9%85." 
-                   target="_blank" 
-                   class="inline-block mt-2 text-xs bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded-full transition-all">
-                    سفارش سریع 💬
-                </a>
-            </div>
-        </div>
+    function getCartTotal() {
+      return cart.reduce((sum, item) => {
+        return sum + Number(item.price || 0) * Number(item.qty || 0);
+      }, 0);
+    }
 
-        <!-- Dynamic Note -->
-        <div class="bg-amber-100 text-amber-800 p-3 rounded-lg text-xs text-center">
-            ☕️ با کلیک روی دکمه سفارش، مستقیماً سفارش شما در واتساپ برای ما ارسال می‌شود.
-        </div>
-    </main>
+    async function submitOrder() {
+      const messageBox = document.getElementById("order-message");
 
-    <!-- Footer -->
-    <footer class="bg-stone-900 text-stone-400 text-center py-6 text-xs">
-        <p>آدرس: تهران، خیابان ونک، پلاک ۱۰</p>
-        <p class="mt-2 text-stone-500">طراحی شده با ❤️ برای کافه شما</p>
-    </footer>
+      const customerName = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const tableNumber = document.getElementById("tableNumber").value.trim();
+
+      messageBox.innerHTML = "";
+
+      if (!customerName) {
+        alert("لطفاً نام خود را وارد کنید.");
+        return;
+      }
+
+      if (!phone) {
+        alert("لطفاً شماره تماس را وارد کنید.");
+        return;
+      }
+
+      if (cart.length === 0) {
+        alert("سبد خرید شما خالی است.");
+        return;
+      }
+
+      const totalPrice = getCartTotal();
+
+      const itemsText = cart.map(item => {
+        return `${item.name} × ${item.qty}`;
+      }).join("، ");
+
+      const orderData = {
+        secret: ORDER_SECRET,
+        orderId: "ORD-" + Date.now(),
+        customerName: customerName,
+        phone: phone,
+        tableNumber: tableNumber,
+        items: itemsText,
+        totalPrice: totalPrice,
+        status: "ثبت شده"
+      };
+
+      try {
+        messageBox.innerHTML = `<div>در حال ثبت سفارش...</div>`;
+
+        const response = await fetch(WEB_APP_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          messageBox.innerHTML = `<div class="success">سفارش شما با موفقیت ثبت شد.</div>`;
+
+          alert("سفارش شما با موفقیت ثبت شد.");
+
+          cart = [];
+          updateCartUI();
+
+          document.getElementById("customerName").value = "";
+          document.getElementById("phone").value = "";
+          document.getElementById("tableNumber").value = "";
+
+        } else {
+          messageBox.innerHTML = `<div class="error">${escapeHtml(result.message || "خطا در ثبت سفارش")}</div>`;
+          alert(result.message || "خطا در ثبت سفارش");
+        }
+
+      } catch (error) {
+        console.error("خطا در ارسال سفارش:", error);
+        messageBox.innerHTML = `<div class="error">خطا در ارسال سفارش. لطفاً دوباره تلاش کنید.</div>`;
+        alert("خطا در ارسال سفارش");
+      }
+    }
+
+    function formatPrice(value) {
+      const number = Number(value || 0);
+      return number.toLocaleString("fa-IR");
+    }
+
+    function toPersianNumber(value) {
+      return Number(value || 0).toLocaleString("fa-IR");
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(value) {
+      return String(value || "")
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'")
+        .replaceAll('"', "&quot;");
+    }
+
+    window.addEventListener("DOMContentLoaded", fetchMenu);
+  </script>
 
 </body>
 </html>
-
