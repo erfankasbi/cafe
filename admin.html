@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت کافه | سفارشات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: Vazirmatn, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex flex-col md:flex-row">
+        <!-- Sidebar -->
+        <aside class="w-full md:w-64 bg-slate-800 text-white p-6">
+            <h1 class="text-2xl font-bold mb-8 text-orange-400">مدیریت کافه</h1>
+            <nav class="space-y-4">
+                <a href="#" class="block py-2.5 px-4 rounded bg-orange-500 text-white">سفارشات جدید</a>
+                <a href="#" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">آمار فروش</a>
+                <a href="#" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">مدیریت منو</a>
+                <a href="#" class="block py-2.5 px-4 rounded hover:bg-slate-700 transition">تنظیمات</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800">لیست سفارشات لحظه‌ای</h2>
+                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                    بروزرسانی دستی
+                </button>
+            </header>
+
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-r-4 border-orange-500">
+                    <p class="text-gray-500 text-sm">سفارشات امروز</p>
+                    <p class="text-3xl font-bold">۱۲</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-r-4 border-blue-500">
+                    <p class="text-gray-500 text-sm">در حال آماده‌سازی</p>
+                    <p class="text-3xl font-bold">۳</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-r-4 border-green-500">
+                    <p class="text-gray-500 text-sm">تکمیل شده</p>
+                    <p class="text-3xl font-bold">۴۵</p>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b">
+                                <th class="p-4 font-semibold text-gray-600">نام مشتری</th>
+                                <th class="p-4 font-semibold text-gray-600">سفارش</th>
+                                <th class="p-4 font-semibold text-gray-600">تعداد</th>
+                                <th class="p-4 font-semibold text-gray-600">زمان</th>
+                                <th class="p-4 font-semibold text-gray-600">وضعیت</th>
+                                <th class="p-4 font-semibold text-gray-600">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <!-- نمونه سفارش ۱ -->
+                            <tr>
+                                <td class="p-4">علی محمدی</td>
+                                <td class="p-4 font-medium text-gray-700">اسپرسو دبل</td>
+                                <td class="p-4">۱</td>
+                                <td class="p-4 text-gray-500 text-sm">۱۰:۱۵</td>
+                                <td class="p-4">
+                                    <span class="px-3 py-1 text-xs rounded-full bg-orange-100 text-orange-600">جدید</span>
+                                </td>
+                                <td class="p-4">
+                                    <button class="text-blue-600 hover:underline">تغییر وضعیت</button>
+                                </td>
+                            </tr>
+                            <!-- نمونه سفارش ۲ -->
+                            <tr>
+                                <td class="p-4">سارا حسینی</td>
+                                <td class="p-4 font-medium text-gray-700">کیک شکلاتی + لاته</td>
+                                <td class="p-4">۲</td>
+                                <td class="p-4 text-gray-500 text-sm">۱۰:۰۵</td>
+                                <td class="p-4">
+                                    <span class="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-600">در حال آماده‌سازی</span>
+                                </td>
+                                <td class="p-4">
+                                    <button class="text-blue-600 hover:underline">تغییر وضعیت</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
 
